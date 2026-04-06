@@ -1,4 +1,13 @@
-import { Code2, Palette, Layout, Sparkles, Boxes, Layers, GitBranch, Github } from "lucide-react";
+import {
+  Code2,
+  Palette,
+  Layout,
+  Sparkles,
+  Boxes,
+  Layers,
+  GitBranch,
+} from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 const skills = [
   {
@@ -45,7 +54,7 @@ const skills = [
   },
   {
     name: "GitHub",
-    icon: Github,
+    icon: SiGithub,
     description: "Code collaboration",
     color: "from-gray-600 to-gray-800",
   },
@@ -76,7 +85,9 @@ export function Skills() {
                 <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                   {skill.name}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-400">{skill.description}</p>
+                <p className="text-sm sm:text-base text-gray-400">
+                  {skill.description}
+                </p>
               </div>
             );
           })}
