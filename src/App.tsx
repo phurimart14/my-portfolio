@@ -7,7 +7,7 @@ import { Contact } from "./components/Contact";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br form-gray-900 via-black to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <Hero />
       <About />
       <Skills />
