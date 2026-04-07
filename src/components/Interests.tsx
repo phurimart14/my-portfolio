@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Gamepad2, Music, Tv, Heart } from "lucide-react";
+import umamusumeImage from "../images/interestimage/umamusume.jpg";
+import yorushikaImage from "../images/interestimage/Yorushika_Logo.jpg";
+import bleachImage from "../images/interestimage/bleach.png";
 
 type InterestTab = "gaming" | "music" | "anime";
 
@@ -17,8 +20,7 @@ const interestDetails: Record<InterestTab, InterestDetail> = {
     title: "Umamusume Pretty Derby",
     description:
       "A unique horse racing simulation game that combines idol training with competitive racing. Train your umamusume to become the best racer and idol!",
-    image:
-      "https://images.unsplash.com/photo-1765410855567-77cf77f2de34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3JzZSUyMHJhY2luZyUyMGdhbWUlMjBhbmltZXxlbnwxfHx8fDE3NzQ5NDMzMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: umamusumeImage,
     details: [
       "Genre: Sports, Simulation, Rhythm",
       "Platform: Mobile, PC",
@@ -32,8 +34,7 @@ const interestDetails: Record<InterestTab, InterestDetail> = {
     title: "Yorushika",
     description:
       "A Japanese rock duo known for their poetic lyrics and emotional melodies. Their music perfectly blends storytelling with beautiful instrumentals.",
-    image:
-      "https://images.unsplash.com/photo-1722633197473-0c23aa4dd75b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqYXBhbmVzZSUyMGJhbmQlMjBjb25jZXJ0JTIwbXVzaWN8ZW58MXx8fHwxNzc0OTQzMzA4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: yorushikaImage,
     details: [
       "Genre: Rock, Alternative",
       "Members: n-buna (composer), suis (vocalist)",
@@ -47,8 +48,7 @@ const interestDetails: Record<InterestTab, InterestDetail> = {
     title: "Bleach",
     description:
       "An epic supernatural action anime following Ichigo Kurosaki's journey as a Soul Reaper. Features incredible sword battles and compelling character development.",
-    image:
-      "https://images.unsplash.com/photo-1765708180213-959fdb69fb05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzYW11cmFpJTIwc3dvcmQlMjBhY3Rpb258ZW58MXx8fHwxNzc0OTQzMzA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: bleachImage,
     details: [
       "Genre: Action, Supernatural, Adventure",
       "Studio: Studio Pierrot",
@@ -70,7 +70,9 @@ export function Interests() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-8 sm:mb-12">
           <Heart className="text-blue-400" size={28} />
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Interests</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">
+            Interests
+          </h2>
         </div>
 
         {/* Navigation Tabs */}
