@@ -3,6 +3,7 @@ import { Gamepad2, Music, Tv, Heart } from "lucide-react";
 import umamusumeImage from "../images/interestimage/umamusume.jpg";
 import yorushikaImage from "../images/interestimage/Yorushika_Logo.jpg";
 import bleachImage from "../images/interestimage/bleach.png";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 type InterestTab = "gaming" | "music" | "anime";
 
@@ -61,12 +62,13 @@ const interestDetails: Record<InterestTab, InterestDetail> = {
 };
 
 export function Interests() {
+  const ref = useScrollReveal();
   const [activeTab, setActiveTab] = useState<InterestTab>("gaming");
   const currentInterest = interestDetails[activeTab];
   const IconComponent = currentInterest.icon;
 
   return (
-    <section id="interests" className="py-16 sm:py-20 px-4 sm:px-6">
+    <section ref={ref} id="interests" className="reveal py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-8 sm:mb-12">
           <Heart className="text-blue-400" size={28} />

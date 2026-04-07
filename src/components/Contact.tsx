@@ -1,6 +1,7 @@
 import { Mail } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { FaLinkedin } from "react-icons/fa";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const contactMethods = [
   {
@@ -31,8 +32,10 @@ export function Contact() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const ref = useScrollReveal();
+
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6 bg-black/20">
+    <section ref={ref} className="reveal py-16 sm:py-20 px-4 sm:px-6 bg-black/20">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-3 mb-8 sm:mb-12">
           <Mail className="text-blue-400" size={28} />

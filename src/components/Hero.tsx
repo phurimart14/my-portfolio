@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, Briefcase, Download } from "lucide-react";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export function Hero() {
+  const ref = useScrollReveal();
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -57,7 +59,10 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 relative">
+    <section
+      ref={ref}
+      className=" reveal min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 relative"
+    >
       <div className="text-center space-y-4 sm:space-y-6 max-w-3xl">
         <div className="space-y-2">
           <p className="text-blue-400 text-base sm:text-lg font-medium tracking-wide h-7 sm:h-8">

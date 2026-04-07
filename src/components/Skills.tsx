@@ -8,6 +8,7 @@ import {
   GitBranch,
 } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const skills = [
   {
@@ -61,8 +62,13 @@ const skills = [
 ];
 
 export function Skills() {
+  const ref = useScrollReveal();
   return (
-    <section id="skills" className="py-16 sm:py-20 px-4 sm:px-6 bg-black/20">
+    <section
+      ref={ref}
+      id="skills"
+      className="reveal py-16 sm:py-20 px-4 sm:px-6 bg-black/20"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-8 sm:mb-12">
           <Code2 className="text-blue-400" size={28} />
