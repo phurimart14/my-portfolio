@@ -1,15 +1,94 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Briefcase, Download } from "lucide-react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export function Hero() {
   const ref = useScrollReveal();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypeingSpeed] = useState(150);
 
   const title = ["Frontend Developer", "Creative Designer"];
+
+  // Particle effect
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+    }[] = [];
+
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 1.5 + 0.5,
+      });
+    }
+
+    let animId: number;
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(96, 165, 250, 0.6)";
+        ctx.fill();
+      });
+
+      // Draw lines between nearby particles
+      particles.forEach((a, i) => {
+        particles.slice(i + 1).forEach((b) => {
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(96, 165, 250, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+      });
+
+      animId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -63,7 +142,13 @@ export function Hero() {
       ref={ref}
       className=" reveal min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 relative"
     >
-      <div className="text-center space-y-4 sm:space-y-6 max-w-3xl">
+      {/* Particle canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 pointer-events-none"
+      />
+      {/* Content */}
+      <div className="text-center space-y-4 sm:space-y-6 max-w-3xl relative z-10">
         <div className="space-y-2">
           <p className="text-blue-400 text-base sm:text-lg font-medium tracking-wide h-7 sm:h-8">
             {text}
@@ -99,7 +184,7 @@ export function Hero() {
 
       <button
         onClick={scrollToAbout}
-        className="absolute bottom-8 sm:bottom-12 animate-bounce text-blue-400 hover:text-blue-300 transition-colors"
+        className="absolute bottom-8 sm:bottom-12 animate-bounce text-blue-400 hover:text-blue-300 transition-colors z-10"
         aria-label="Scroll to content"
       >
         <ChevronDown size={40} />
