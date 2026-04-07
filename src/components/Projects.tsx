@@ -1,38 +1,39 @@
 import { Briefcase, ExternalLink } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
+import animeExplorer from "../images/Anime Explorer.png";
+import airbnbClone from "../images/airbnb-clone.png";
+import pokedex from "../images/pokedex.png";
 
 const projects = [
   {
     title: "Anime Explorer",
     description:
       "A web application for discovering and exploring anime series with detailed information, ratings, and personalized recommendations.",
-    image:
-      "https://images.unsplash.com/photo-1755962270071-d8e353c7ca97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltZSUyMG1hbmdhJTIwY29sb3JmdWx8ZW58MXx8fHwxNzc0ODQxMzA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: animeExplorer,
     tags: ["React", "TypeScript", "API Integration", "tailwind CSS"],
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://animeexplorer-chi.vercel.app/",
+    githubUrl:
+      "https://github.com/phurimart14/Final-Front-end-Project-anime-explorer",
     gradient: "from-pink-500 to-purple-600",
   },
   {
     title: "AirBNB Clone",
     description:
       "A fully functional vacation rental platform clone featuring property listings, search filters, booking system, and responsive design.",
-    image:
-      "https://images.unsplash.com/photo-1594873604892-b599f847e859?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcGFydG1lbnQlMjBpbnRlcmlvcnxlbnwxfHx8fDE3NzQ4NzQyNTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: airbnbClone,
     tags: ["HTML", "CSS"],
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://cloneairbnb-kohl.vercel.app/",
+    githubUrl: "https://github.com/phurimart14/cloneairbnb",
     gradient: "from-red-500 to-pink-500",
   },
   {
     title: "Pokédex",
     description:
       "An interactive Pokédex application with search functionality, detailed Pokémon stats, evolution chains, and type-based filtering.",
-    image:
-      "https://images.unsplash.com/photo-1647893977168-6316f6c9ae44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb2tlbW9uJTIwY2FyZHMlMjBnYW1lfGVufDF8fHx8MTc3NDk0MzE1MHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: pokedex,
     tags: ["React", "PokéAPI", "tailwind CSS", "TypeScript"],
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://pokedex-do4o1jq5z-phurimart14s-projects.vercel.app/",
+    githubUrl: "https://github.com/phurimart14/Pokedex",
     gradient: "from-yellow-500 to-red-500",
   },
 ];
@@ -48,11 +49,11 @@ export function Projects() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 ">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-800/50 rounded-2xl shadow-lg overflow-hidden border border-blue-500/40 hover:shadow-2xl hover:border-blue-400/60 transition-all duration-300 hover:-translate-y-2 group backdrop-blur-sm"
+              className="bg-gray-800/50 rounded-2xl shadow-lg overflow-hidden border border-blue-500/40 hover:shadow-2xl hover:border-blue-400/60 transition-all duration-300 hover:-translate-y-2 group backdrop-blur-sm flex flex-col"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -65,11 +66,11 @@ export function Projects() {
                 ></div>
               </div>
 
-              <div className="p-5 sm:p-6">
+              <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
                   {project.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed flex-1">
                   {project.description}
                 </p>
 
@@ -84,7 +85,7 @@ export function Projects() {
                   ))}
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 ">
                   <a
                     href={project.liveUrl}
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors text-sm sm:text-base"
