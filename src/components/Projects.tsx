@@ -42,7 +42,11 @@ const projects = [
 export function Projects() {
   const ref = useScrollReveal();
   return (
-    <section ref={ref} id="projects" className="reveal py-16 sm:py-20 px-4 sm:px-6">
+    <section
+      ref={ref}
+      id="projects"
+      className="reveal py-16 sm:py-20 px-4 sm:px-6"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-8 sm:mb-12">
           <Briefcase className="text-blue-400" size={28} />
