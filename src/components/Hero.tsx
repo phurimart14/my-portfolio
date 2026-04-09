@@ -128,9 +128,8 @@ export function Hero() {
 
   const handleDownloadCV = () => {
     // Create a link element and trigger download
-    // In a real scenario, replace with actual CV file path
     const link = document.createElement("a");
-    link.href = "#"; // Replace with actual CV file path
+    link.href = "/Resume_Phurimart_Sudanich_Frontend.pdf"; 
     link.download = "Phurimart_Sudanich_CV.pdf";
     document.body.appendChild(link);
     link.click();
